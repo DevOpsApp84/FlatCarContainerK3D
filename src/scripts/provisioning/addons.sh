@@ -6,7 +6,7 @@ EOF
 echo "Create local directory for binaries - FlatCar Container"
 mkdir ~/bin
 
-source ~/.bashrc
+source ~/.bash_profile
 
 echo "HELM Installation"
 curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 -o /tmp/get_helm.sh
