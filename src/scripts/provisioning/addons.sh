@@ -34,4 +34,7 @@ git clone https://github.com/ahmetb/kubectx.git ~/.kubectx
 
 rm -rf /tmp/get_helm.sh /tmp/k3d_install.sh ~/kubectl ~/kubectl.sha256
 
+echo "Installing Istio latest"
+
+
 exit 0
