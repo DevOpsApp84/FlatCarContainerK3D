@@ -4,9 +4,6 @@
 # Variables
 IMAGE_OS_NAME = "flatcar-alpha"
 
-SRCDIR = "sync"
-DSTDIR = "/var/tmp/sync"
-
 lab = {
   "tetrate"      => { :osimage => IMAGE_OS_NAME,  :mac => "080027112232", :ip => "192.168.0.11",  :cpus => 2,  :mem =>4096,  :custom_host => "fcc.sh"  }
   }
@@ -45,12 +42,9 @@ Vagrant.configure("2") do |config|
         vb.cpus = "#{info[:cpus]}"
         config.vm.box = info[:osimage]
 
+        # NEED TO BE ADJUST FOR YOUR NEEDS
         override.vm.network "public_network", :adapter=>1 , type: "dhcp", :bridge => "Intel(R) Wi-Fi 6 AX200 160MHz", :mac => "#{info[:mac]}"
         config.ssh.host = "#{info[:ip]}"
-
-
-        # SSH filesystem mounts
-        #override.vm.synced_folder SRCDIR, DSTDIR, type: 'sshfs', ssh_opts_append: "-o Compression=yes", sshfs_opts_append: "-o cache=no", disabled: false, create: true
 
         # Configure hostname
         override.vm.hostname = hostname

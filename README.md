@@ -1,3 +1,4 @@
+!!! THIS IS BRIDGE VERSION IF YOU WOULD LIKE TO USE PLEASE ADJUST NETWORK ADAPTER FOR YOUR NEEDS !!!
 ## Kubernetes k3d lab based on FlatCar Container OS
 ```
 .--------------------------------------------------------------------.
