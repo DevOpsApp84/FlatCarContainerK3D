@@ -8,7 +8,7 @@ SRCDIR = "sync"
 DSTDIR = "/var/tmp/sync"
 
 lab = {
-  "tetrate"      => { :osimage => IMAGE_OS_NAME,  :mac => "080027112232", :ip => "192.168.0.11",  :cpus => 2,  :mem =>4096,  :custom_host => "fcc.sh"  }
+  "k3d"           => { :osimage => IMAGE_OS_NAME,  :ip => "10.10.0.2",  :cpus => 2,  :mem =>4096,  :custom_host => "fcc.sh"  }
   }
 
 Vagrant.configure("2") do |config|
@@ -44,13 +44,7 @@ Vagrant.configure("2") do |config|
         vb.memory = "#{info[:mem]}"
         vb.cpus = "#{info[:cpus]}"
         config.vm.box = info[:osimage]
-
-        override.vm.network "public_network", :adapter=>1 , type: "dhcp", :bridge => "Intel(R) Wi-Fi 6 AX200 160MHz", :mac => "#{info[:mac]}"
-        config.ssh.host = "#{info[:ip]}"
-
-
-        # SSH filesystem mounts
-        #override.vm.synced_folder SRCDIR, DSTDIR, type: 'sshfs', ssh_opts_append: "-o Compression=yes", sshfs_opts_append: "-o cache=no", disabled: false, create: true
+        override.vm.network :private_network, ip: "#{info[:ip]}"
 
         # Configure hostname
         override.vm.hostname = hostname
